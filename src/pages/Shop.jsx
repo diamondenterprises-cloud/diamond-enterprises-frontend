@@ -12,7 +12,7 @@ export default function Shop() {
   const [error, setError] = useState("");
   const { addItemToCart } = useContext(CartContext);
 
-  const API_BASE_URL = import.meta.env.BACKEND_API_URL;
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_API_URL;
   const handleAddToCart = (item) => {
     addItemToCart(item, 1);
     toast.success(`${item.name} added to cart!`, { position: "top-center", duration: 2000 });

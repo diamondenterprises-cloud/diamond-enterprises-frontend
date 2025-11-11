@@ -11,7 +11,7 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const { addItemToCart } = useContext(CartContext);
 
-  const API_BASE_URL = import.meta.env.BACKEND_API_URL;
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_API_URL;
 
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);

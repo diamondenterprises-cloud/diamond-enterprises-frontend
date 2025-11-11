@@ -13,7 +13,7 @@ import axios from "axios";
 
 export default function ProfilePage() {
   const navigate = useNavigate();
-  const API_BASE_URL = import.meta.env.BACKEND_API_URL;
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_API_URL;
   const token = localStorage.getItem("token");
 
   const [isEditing, setIsEditing] = useState(false);
