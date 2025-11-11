@@ -6,8 +6,8 @@ import { Toaster, toast } from "react-hot-toast";
 import { FaUser, FaLock, FaEnvelope, FaPhone } from "react-icons/fa";
 
 
-// Environment-based API URL (make sure you define VITE_API_URL in your .env)
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+// Environment-based API URL (make sure you define BACKEND_API_URL in your .env)
+const API_BASE_URL = import.meta.env.BACKEND_API_URL;
 
 export default function AuthPage() {
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ export default function AuthPage() {
         axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
 
         // Redirect admin or normal user
-        const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+        const ADMIN_EMAIL = import.meta.env.BACKEND_ADMIN_EMAIL;
         if (data.email === ADMIN_EMAIL) {
           setMessage("Welcome, Admin!");
           setTimeout(() => {

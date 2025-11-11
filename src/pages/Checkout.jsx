@@ -6,7 +6,7 @@ import axios from "axios";
 export default function Checkout() {
   const { cartItems, subtotal, total, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  const API_BASE_URL = import.meta.env.BACKEND_API_URL;
 
   const [formData, setFormData] = useState({
     name: "",
