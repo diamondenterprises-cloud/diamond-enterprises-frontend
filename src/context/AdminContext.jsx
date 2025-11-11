@@ -12,7 +12,7 @@ export const AdminProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   // adjust base URL as needed for your deployment
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
   // Setup axios defaults for authorization header
   useEffect(() => {

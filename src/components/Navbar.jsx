@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     // const [user, setUser] = useState(null);
-    const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+    const ADMIN_EMAIL = import.meta.env.VITE_BACKEND_ADMIN_EMAIL;
     // useEffect(() => {
     //     const email = localStorage.getItem("email");
     //     if (email === ADMIN_EMAIL) {
