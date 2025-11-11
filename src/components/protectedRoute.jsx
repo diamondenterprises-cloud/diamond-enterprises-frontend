@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 export default function ProtectedRoute({ children, adminOnly = false }) {
   const token = localStorage.getItem("token");
   const email = localStorage.getItem("email");
-  const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+  const ADMIN_EMAIL = import.meta.env.VITE_BACKEND_ADMIN_EMAIL;
 
   // not logged in
   if (!token) {
