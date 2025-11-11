@@ -1,0 +1,76 @@
+// src/App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Shop from "./pages/Shop";
+import ProductDetails from "./pages/ProductDetails";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+import AuthPage from "./pages/AuthPage";
+import Checkout from "./pages/Checkout";
+import ProfilePage from "./pages/ProfilePage";
+import AdminPanel from "./pages/AdminPanel";
+import ProtectedRoute from "./components/protectedRoute";
+import { AuthProvider } from "./context/AuthContext";
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="grow bg-[#FFF9F4]">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<AuthPage />} />
+
+              {/* Protected user routes */}
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfilePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <ProtectedRoute>
+                    <Cart />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <ProtectedRoute>
+                    <Checkout />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* ✅ Admin-only route */}
+              <Route
+                path="/admin-panel"
+                element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminPanel />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
+  );
+}
