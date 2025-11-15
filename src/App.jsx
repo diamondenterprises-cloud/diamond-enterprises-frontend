@@ -15,65 +15,62 @@ import ProfilePage from "./pages/ProfilePage";
 import AdminPanel from "./pages/AdminPanel";
 import ProtectedRoute from "./components/protectedRoute";
 import { AuthProvider } from "./context/AuthContext";
-import { BrowserRouter } from "react-router-dom";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Router>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="grow bg-[#FFF9F4]">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/shop" element={<Shop />} />
-                <Route path="/product/:id" element={<ProductDetails />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/login" element={<AuthPage />} />
+    <AuthProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="grow bg-[#FFF9F4]">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<AuthPage />} />
 
-                {/* Protected user routes */}
-                <Route
-                  path="/profile"
-                  element={
-                    <ProtectedRoute>
-                      <ProfilePage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/cart"
-                  element={
-                    <ProtectedRoute>
-                      <Cart />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/checkout"
-                  element={
-                    <ProtectedRoute>
-                      <Checkout />
-                    </ProtectedRoute>
-                  }
-                />
+              {/* Protected user routes */}
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfilePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <ProtectedRoute>
+                    <Cart />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <ProtectedRoute>
+                    <Checkout />
+                  </ProtectedRoute>
+                }
+              />
 
-                {/* ✅ Admin-only route */}
-                <Route
-                  path="/admin-panel"
-                  element={
-                    <ProtectedRoute adminOnly={true}>
-                      <AdminPanel />
-                    </ProtectedRoute>
-                  }
-                />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </AuthProvider>
-    </BrowserRouter>
+              {/* ✅ Admin-only route */}
+              <Route
+                path="/admin-panel"
+                element={
+                  <ProtectedRoute adminOnly={true}>
+                    <AdminPanel />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
